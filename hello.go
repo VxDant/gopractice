@@ -1,16 +1,38 @@
 package main
 
-import "fmt"
+import (
+	"example/hello/operations"
+	"fmt"
+	"strings"
+	"strconv"
+)
 
 func main() {
 	fmt.Println("Hello, World!")
 
-	myVariable := "The String is very important part"
+	fmt.Println("Enter two numbers to add:")
 
-	fmt.Println(myVariable)
+	var inputOperation string
 
-	x := 51
-	y := 51
+	fmt.Scanln(&inputOperation)
 
-	addition(x, y)
+	var x, y int
+	
+	x, _ = strconv.Atoi(strings.Split(inputOperation, " ")[0])
+	y, _ = strconv.Atoi(strings.Split(inputOperation, " ")[1])
+
+	fmt.Println("Enter the operation to perform:")
+	fmt.Println("type 'add' to perform addition")
+
+	var operation string
+	fmt.Scanln(&operation)
+
+	if operation == "add" {
+		operations.Addition(x, y)
+	} else if operation == "sub" {
+		operations.Subtraction(x, y)
+
+	} else {
+		fmt.Println("Invalid operation")
+	}
 }
